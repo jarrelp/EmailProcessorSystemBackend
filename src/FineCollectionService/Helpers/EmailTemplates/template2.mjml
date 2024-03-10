@@ -1,0 +1,49 @@
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text> {{Place}}, woensdag 28 februari 2024 </mj-text>
+        <mj-text> Dear Mr. / Miss / Mrs. Valerie Kiedrowski, </mj-text>
+        <mj-text>
+          We hereby inform you of the fact that a speeding violation was
+          detected with a vehicle that is registered to you.
+        </mj-text>
+        <mj-text>
+          The violation was detected by a speeding camera. We have a digital
+          image of your vehicle committing the violation on record in our
+          system. If requested by your solicitor, we will provide this image to
+          you.
+        </mj-text>
+        <mj-text>
+          Below you can find all the details of the violation.
+        </mj-text>
+        <mj-text> License Plate: {{LicensePlate}} </mj-text>
+        <mj-text> Brand: {{Brand}} </mj-text>
+        <mj-text> Model: {{Model}} </mj-text>
+        <mj-text> Road: {{Road}} </mj-text>
+        <mj-text> Date: {{Date}} </mj-text>
+        <mj-text> Time of Day: {{TimeOfDay}} </mj-text>
+        <mj-text> Maximum Speed Violation: {{MaxSpeedViolation}} </mj-text>
+        <mj-text> Sanction Amount: {{SanctionAmount}} </mj-text>
+        <mj-text> Sanction handling: </mj-text>
+        <mj-text>
+          If the amount of the fine is to be determined by the prosecutor, you
+          will receive a notice to appear in court shortly.
+        </mj-text>
+        <mj-text>
+          Otherwise, you must pay the sanctioned fine within 8 weeks after the
+          date of this email. If you fail to pay within 8 weeks, you will
+          receive a first reminder email and the fine will be increased to 1.5x
+          the original fine amount. If you fail to pay within 8 weeks after the
+          first reminder, you will receive a second and last reminder email and
+          the fine will be increased to 3x the original fine amount. If you fail
+          to pay within 8 weeks after the second reminder, the case is turned
+          over to the prosecutor and you will receive a notice to appear in
+          court.
+        </mj-text>
+        <mj-text> Yours sincerely, </mj-text>
+        <mj-text> The Central Fine Collection Agency </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

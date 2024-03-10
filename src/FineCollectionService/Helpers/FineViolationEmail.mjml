@@ -1,0 +1,108 @@
+<mjml>
+  <mj-head>
+    <mj-style>
+      .body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+      .table { text-align: left; padding-top: 10px; } .th { width: 200px;
+      padding-left: 10px; background-color: #EEEEEE; font-weight: normal; } .td
+      { padding: 5px; width: 300px; border: 1px solid black; } .fine {
+      font-weight: bold; color: #FF0000; } .logo { float: left; display: block;
+      margin-top: -15px; } .title { display: block; } .logo-name { color:
+      #FFFFFF; background-color: #2AA3D9; vertical-align: middle; padding: 10px;
+      margin-top: 20px; height: 20px; width: 400px; } .logo-bar {
+      background-color: #005D91; width: 420px; height: 20px; margin-top: -22px;
+      margin-bottom: 30px; }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text>The Hague, {{ DateTime.Now.ToLongDateString() }}</mj-text>
+        <mj-text>Dear Mr. / Miss / Mrs. {{ vehicleInfo.OwnerName }},</mj-text>
+        <mj-text
+          >We hereby inform you of the fact that a speeding violation was
+          detected with a vehicle that is registered to you.</mj-text
+        >
+        <mj-text
+          >The violation was detected by a speeding camera. We have a digital
+          image of your vehicle committing the violation on record in our
+          system. If requested by your solicitor, we will provide this image to
+          you.</mj-text
+        >
+        <mj-divider />
+        <mj-text>
+          Below you can find all the details of the violation.
+          <table class="table">
+            <tr>
+              <th class="th">License number</th>
+              <td class="td">{{ vehicleInfo.VehicleId }}</td>
+            </tr>
+            <tr>
+              <th class="th">Brand</th>
+              <td class="td">{{ vehicleInfo.Brand }}</td>
+            </tr>
+            <tr>
+              <th class="th">Model</th>
+              <td class="td">{{ vehicleInfo.Model }}</td>
+            </tr>
+          </table>
+        </mj-text>
+        <mj-text>
+          Conditions during the violation:
+          <table class="table">
+            <tr>
+              <th class="th">Road</th>
+              <td class="td">{{ speedingViolation.RoadId }}</td>
+            </tr>
+            <tr>
+              <th class="th">Date</th>
+              <td class="td">
+                {{ speedingViolation.Timestamp.ToString("dd-MM-yyyy") }}
+              </td>
+            </tr>
+            <tr>
+              <th class="th">Time of day</th>
+              <td class="td">
+                {{ speedingViolation.Timestamp.ToString("hh:mm:ss") }}
+              </td>
+            </tr>
+          </table>
+        </mj-text>
+        <mj-text>
+          Sanction:
+          <table class="table">
+            <tr>
+              <th class="th">Maximum speed violation</th>
+              <td class="td">{{ speedingViolation.ViolationInKmh }} KMh</td>
+            </tr>
+            <tr>
+              <th class="th">Sanction amount</th>
+              <td class="td"><span class="fine">{{ fine }}</span></td>
+            </tr>
+          </table>
+        </mj-text>
+        <mj-divider />
+        <mj-text> Sanction handling: </mj-text>
+        <mj-text>
+          If the amount of the fine is to be determined by the prosecutor, you
+          will receive a notice to appear in court shortly.
+        </mj-text>
+        <mj-text>
+          Otherwise, you must pay the sanctioned fine within 8 weeks after the
+          date of this email. If you fail to pay within 8 weeks, you will
+          receive a first reminder email and the fine will be increased to 1.5x
+          the original fine amount. If you fail to pay within 8 weeks after the
+          first reminder, you will receive a second and last reminder email and
+          the fine will be increased to 3x the original fine amount. If you fail
+          to pay within 8 weeks after the second reminder, the case is turned
+          over to the prosecutor and you will receive a notice to appear in
+          court.
+        </mj-text>
+        <mj-divider />
+        <mj-text>
+          Yours sincerely, <br />
+          The Central Fine Collection Agency
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
