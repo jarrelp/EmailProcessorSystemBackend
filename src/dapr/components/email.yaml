@@ -2,7 +2,7 @@ apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
   name: sendmail
-  namespace: dapr-trafficcontrol
+  namespace: dapr-emailprocessorsystem
 spec:
   type: bindings.smtp
   version: v1
@@ -22,6 +22,6 @@ spec:
     - name: skipTLSVerify
       value: true
 auth:
-  secretStore: trafficcontrol-secrets
+  secretStore: emailprocessorsystem-secrets
 scopes:
   - vehicleregistrationservice

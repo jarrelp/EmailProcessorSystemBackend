@@ -2,7 +2,7 @@ apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
   name: statestore
-  namespace: dapr-trafficcontrol
+  namespace: dapr-emailprocessorsystem
 spec:
   type: state.redis
   version: v1
@@ -16,6 +16,6 @@ spec:
     - name: actorStateStore
       value: 'true'
 auth:
-  secretStore: trafficcontrol-secrets
+  secretStore: emailprocessorsystem-secrets
 scopes:
-  - trafficcontrolservice
+  - emailfetchingservice
