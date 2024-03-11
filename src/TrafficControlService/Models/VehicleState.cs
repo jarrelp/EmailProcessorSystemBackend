@@ -1,15 +1,13 @@
 namespace TrafficControlService.Models;
 
-public record struct VehicleState
+public record struct OracleDataState
 {
-    public string LicenseNumber { get; init; }
+    public string Data { get; init; }
     public DateTime EntryTimestamp { get; init; }
-    public DateTime? ExitTimestamp { get; init; }
 
-    public VehicleState(string licenseNumber, DateTime entryTimestamp, DateTime? exitTimestamp = null)
+    public OracleDataState(string data, DateTime entryTimestamp)
     {
-        this.LicenseNumber = licenseNumber;
+        this.Data = data;
         this.EntryTimestamp = entryTimestamp;
-        this.ExitTimestamp = exitTimestamp;
     }
 }

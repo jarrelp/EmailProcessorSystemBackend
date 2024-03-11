@@ -5,8 +5,7 @@ namespace FineCollectionService.Helpers;
 public class EmailUtils
 {
   public static string CreateEmailBody(
-      SpeedingViolation speedingViolation,
-      VehicleInfo vehicleInfo)
+      OracleDataEvent @event)
   {
     var mjmlRenderer = new MjmlRenderer();
 

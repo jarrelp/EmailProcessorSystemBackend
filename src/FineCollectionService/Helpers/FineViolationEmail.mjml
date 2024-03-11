@@ -50,10 +50,6 @@
           Conditions during the violation:
           <table class="table">
             <tr>
-              <th class="th">Road</th>
-              <td class="td">{{ speedingViolation.RoadId }}</td>
-            </tr>
-            <tr>
               <th class="th">Date</th>
               <td class="td">
                 {{ speedingViolation.Timestamp.ToString("dd-MM-yyyy") }}

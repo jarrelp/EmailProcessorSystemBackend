@@ -15,3 +15,8 @@ cd src/Simulation
 dotnet run
 
 [text](http://localhost:4000)
+
+RabbitMQ:
+http://localhost:15672/
+guest
+guest

@@ -2,25 +2,19 @@ namespace Simulation;
 
 public class CameraSimulation
 {
-    private readonly ITrafficControlService _trafficControlService;
+    private readonly MqttTrafficControlService _trafficControlService;
     private Random _rnd;
-    private int _camNumber;
-    private int _minEntryDelayInMS = 50;
-    private int _maxEntryDelayInMS = 5000;
-    private int _minExitDelayInS = 4;
-    private int _maxExitDelayInS = 10;
+    private int _minEntryDelayInMS = 1000;
+    private int _maxEntryDelayInMS = 3000;
 
-    public CameraSimulation(int camNumber, ITrafficControlService trafficControlService)
+    public CameraSimulation(MqttTrafficControlService trafficControlService)
     {
         _rnd = new Random();
-        _camNumber = camNumber;
         _trafficControlService = trafficControlService;
     }
 
     public Task Start()
     {
-        Console.WriteLine($"Start camera {_camNumber} simulation.");
-
         while (true)
         {
             try
@@ -33,28 +27,18 @@ public class CameraSimulation
                 {
                     // simulate entry
                     DateTime entryTimestamp = DateTime.Now;
-                    var vehicleRegistered = new VehicleRegistered
+                    var oracleData = new OracleData
                     {
-                        Lane = _camNumber,
-                        LicenseNumber = GenerateRandomLicenseNumber(),
+                        Data = GenerateRandomLicenseNumber(),
                         Timestamp = entryTimestamp
                     };
-                    await _trafficControlService.SendVehicleEntryAsync(vehicleRegistered);
-                    Console.WriteLine($"Simulated ENTRY of vehicle with license-number {vehicleRegistered.LicenseNumber} in lane {vehicleRegistered.Lane}");
-
-
-                    // simulate exit
-                    TimeSpan exitDelay = TimeSpan.FromSeconds(_rnd.Next(_minExitDelayInS, _maxExitDelayInS) + _rnd.NextDouble());
-                    Task.Delay(exitDelay).Wait();
-                    vehicleRegistered.Timestamp = DateTime.Now;
-                    vehicleRegistered.Lane = _rnd.Next(1, 4);
-                    await _trafficControlService.SendVehicleExitAsync(vehicleRegistered);
-                    Console.WriteLine($"Simulated EXIT of vehicle with license-number {vehicleRegistered.LicenseNumber} in lane {vehicleRegistered.Lane}");
+                    await _trafficControlService.SendVehicleEntryAsync(oracleData);
+                    Console.WriteLine($"Simulated ENTRY of vehicle with license-number {oracleData.Data}");
                 }).Wait();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Camera {_camNumber} error: {ex.Message}");
+                Console.WriteLine($"error: {ex.Message}");
             }
         }
     }

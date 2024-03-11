@@ -1,23 +1,49 @@
-﻿namespace VehicleRegistrationService.Controllers;
+﻿using System.Text.Json;
+
+namespace VehicleRegistrationService.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("")]
 public class VehicleInfoController : ControllerBase
 {
     private readonly ILogger<VehicleInfoController> _logger;
-    private readonly IVehicleInfoRepository _vehicleInfoRepository;
 
-    public VehicleInfoController(ILogger<VehicleInfoController> logger, IVehicleInfoRepository vehicleInfoRepository)
+    public VehicleInfoController(ILogger<VehicleInfoController> logger)
     {
         _logger = logger;
-        _vehicleInfoRepository = vehicleInfoRepository;
     }
 
-    [HttpGet("{licenseNumber}")]
-    public ActionResult<VehicleInfo> GetVehicleInfo(string licenseNumber)
+    [Topic("pubsub", "emaildata", "deadletters", false)]
+    [Route("collectfine")]
+    [HttpPost()]
+    public async Task<ActionResult> CollectFine(EmailDataEvent @event, [FromServices] DaprClient daprClient)
     {
-        _logger.LogInformation($"Retrieving vehicle-info for licensenumber {licenseNumber}");
-        VehicleInfo info = _vehicleInfoRepository.GetVehicleInfo(licenseNumber);
-        return info;
+        // log e-mail
+        _logger.LogInformation($"Email data: {@event.ToString()}");
+
+        // publish speedingviolation (Dapr publish / subscribe)
+        await daprClient.InvokeBindingAsync("sendmail", "create", @event.Body, @event.Metadata);
+
+        return Ok();
+    }
+
+    [Topic("pubsub", "deadletters")]
+    [Route("deadletters")]
+    [HttpPost()]
+    public ActionResult HandleDeadLetter(object message)
+    {
+        _logger.LogError("The service was not able to handle a CollectFine message.");
+
+        try
+        {
+            var messageJson = JsonSerializer.Serialize<object>(message);
+            _logger.LogInformation($"Unhandled message content: {messageJson}");
+        }
+        catch
+        {
+            _logger.LogError("Unhandled message's payload could not be deserialized.");
+        }
+
+        return Ok();
     }
 }

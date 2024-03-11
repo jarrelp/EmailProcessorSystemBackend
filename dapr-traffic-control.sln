@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficControlService", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRegistrationService", "src\VehicleRegistrationService\VehicleRegistrationService.csproj", "{45486F4E-3CE7-4C0B-A5DC-230E5D862DA6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisualSimulation", "src\VisualSimulation\VisualSimulation.csproj", "{FFD62B1A-334C-44AA-B761-97AC6B051E71}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

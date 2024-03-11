@@ -10,16 +10,16 @@ public class DaprVehicleStateRepository : IVehicleStateRepository
         _daprClient = daprClient;
     }
 
-    public async Task SaveVehicleStateAsync(VehicleState vehicleState)
+    public async Task SaveVehicleStateAsync(OracleDataState state)
     {
-        await _daprClient.SaveStateAsync<VehicleState>(
-            DAPR_STORE_NAME, vehicleState.LicenseNumber, vehicleState);
+        await _daprClient.SaveStateAsync<OracleDataState>(
+            DAPR_STORE_NAME, state.Data, state);
     }
 
-    public async Task<VehicleState?> GetVehicleStateAsync(string licenseNumber)
+    public async Task<OracleDataState?> GetVehicleStateAsync(string data)
     {
-        var stateEntry = await _daprClient.GetStateEntryAsync<VehicleState>(
-            DAPR_STORE_NAME, licenseNumber);
+        var stateEntry = await _daprClient.GetStateEntryAsync<OracleDataState>(
+            DAPR_STORE_NAME, data);
         return stateEntry.Value;
     }
 }
