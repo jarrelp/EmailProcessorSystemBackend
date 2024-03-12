@@ -19,12 +19,12 @@ public class EmailProcessingController : ControllerBase
     public async Task<ActionResult> GetFetchedData(OracleDataEvent @event, [FromServices] DaprClient daprClient)
     {
         // log e-mail
-        _logger.LogInformation($"Vehicle: {@event.Data} " +
+        _logger.LogInformation($"Data: {@event.Data} " +
             $"On: {@event.Timestamp.ToString("dd-MM-yyyy")} " +
             $"at {@event.Timestamp.ToString("hh:mm:ss")}.");
 
 
-        // send fine by email (Dapr output binding)
+        // process email (Dapr output binding)
         var body = EmailUtils.CreateEmailBody(@event);
         var metadata = new Dictionary<string, string>
         {
@@ -46,7 +46,7 @@ public class EmailProcessingController : ControllerBase
     [HttpPost()]
     public ActionResult HandleDeadLetter(object message)
     {
-        _logger.LogError("The service was not able to handle a CollectFine message.");
+        _logger.LogError("The service was not able to handle the message.");
 
         try
         {

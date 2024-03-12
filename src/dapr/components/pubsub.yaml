@@ -21,6 +21,6 @@ spec:
       value: parallel
 scopes:
   - emailfetchingservice
-  - finecollectionservice
-  - vehicleregistrationservice
+  - emailprocessingservice
+  - emailsendingservice
   - OracleSimulation

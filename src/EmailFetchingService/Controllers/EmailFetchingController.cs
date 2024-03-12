@@ -5,20 +5,20 @@
 public class EmailFetchingController : ControllerBase
 {
     private readonly ILogger<EmailFetchingController> _logger;
-    private readonly IOracleDataStateRepository _vehicleStateRepository;
+    private readonly IOracleDataStateRepository _oracleDataStateRepository;
 
     public EmailFetchingController(
         ILogger<EmailFetchingController> logger,
-        IOracleDataStateRepository vehicleStateRepository)
+        IOracleDataStateRepository oracleDataStateRepository)
     {
         _logger = logger;
-        _vehicleStateRepository = vehicleStateRepository;
+        _oracleDataStateRepository = oracleDataStateRepository;
     }
 
     [Topic("pubsub", "oracledata", "deadletters", false)]
-    [Route("collectfine")]
+    [Route("getoracledata")]
     [HttpPost()]
-    public async Task<ActionResult> CollectFine(OracleDataEvent @event, [FromServices] DaprClient daprClient)
+    public async Task<ActionResult> GetOracleData(OracleDataEvent @event, [FromServices] DaprClient daprClient)
     {
         try
         {
@@ -26,12 +26,12 @@ public class EmailFetchingController : ControllerBase
             _logger.LogInformation($"Oracle data fetched at {@event.Timestamp.ToString("hh:mm:ss")} " +
                 $"with the following data {@event.Data}.");
 
-            // store vehicle state
+            // store oracle data state
             var oracleDataState = new OracleDataState(@event.Data, @event.Timestamp);
-            await _vehicleStateRepository.SaveOracleDataStateAsync(oracleDataState);
+            await _oracleDataStateRepository.SaveOracleDataStateAsync(oracleDataState);
 
-            // get vehicle state
-            var state = await _vehicleStateRepository.GetOracleDataStateAsync(@event.Data);
+            // get oracle data state
+            var state = await _oracleDataStateRepository.GetOracleDataStateAsync(@event.Data);
             if (state == default(OracleDataState))
             {
                 return NotFound();

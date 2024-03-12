@@ -9,7 +9,7 @@ else
 fi 
 
 dapr run \
-    --app-id finecollectionservice \
+    --app-id emailprocessingservice \
     --app-port 6001 \
     --dapr-http-port 3601 \
     --dapr-grpc-port 60001 \

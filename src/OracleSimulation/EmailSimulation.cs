@@ -32,8 +32,8 @@ public class EmailSimulation
                         Data = GenerateRandomLicenseNumber(),
                         Timestamp = entryTimestamp
                     };
-                    await _pubSubService.SendVehicleEntryAsync(oracleData);
-                    Console.WriteLine($"Simulated ENTRY of vehicle with license-number {oracleData.Data}");
+                    await _pubSubService.SendDataAsync(oracleData);
+                    Console.WriteLine($"Simulated Oracle email data with data {oracleData.Data}");
                 }).Wait();
             }
             catch (Exception ex)

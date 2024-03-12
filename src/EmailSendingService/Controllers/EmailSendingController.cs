@@ -32,7 +32,7 @@ public class EmailSendingController : ControllerBase
     [HttpPost()]
     public ActionResult HandleDeadLetter(object message)
     {
-        _logger.LogError("The service was not able to handle a CollectFine message.");
+        _logger.LogError("The service was not able to handle the message.");
 
         try
         {

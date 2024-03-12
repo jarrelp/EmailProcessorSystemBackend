@@ -9,7 +9,7 @@ public class PubSubService : IPubSubService
         _daprClient = daprClient;
     }
 
-    public async Task SendVehicleEntryAsync(OracleData oracleData)
+    public async Task SendDataAsync(OracleData oracleData)
     {
         await _daprClient.PublishEventAsync("pubsub", "oracledata", oracleData);
     }
