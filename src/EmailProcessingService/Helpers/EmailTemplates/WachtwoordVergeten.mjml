@@ -1,0 +1,77 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-all font-family="Verdana" />
+      <mj-section padding="0px" />
+      <mj-divider border-width="2px" border-style="solid" border-color="#eee" />
+    </mj-attributes>
+
+    <mj-style>
+      .ecm-bgcolor { background-color: lightblue; } .ecm-tablecell { word-break:
+      keep-all; padding-right: 10px; vertical-align: top; } .bold { font-weight:
+      bold; } .text-left { text-align: left; } .text-center { text-align:
+      center; } .text-right { text-align: right; } .nowrap { white-space:
+      nowrap; } .ecm-table td, .ecm-table th { padding: 1px 3px;}
+      .ecm-table-dark tr { background-color: #000000; color: #FFFFFF; }
+      .ecm-table-striped tr:nth-child(odd) { background-color: #CCCCCC; }
+      .ecm-table-striped tr:nth-child(even) { background-color: #EEEEEE; }
+    </mj-style>
+  </mj-head>
+
+  <mj-body>
+    <mj-section css-class="ecm-bgcolor" full-width="full-width">
+      <mj-column css-class="ecm-bgcolor">
+        <mj-image
+          width="200px"
+          src="https://angelair.ecmanage.eu/Portals/FASHIONFABRIEK/ANGELAIR/_portal_logo_1687501962551.png?ver=XdNQkxEBBrDZ8CwGlJZHcg%3d%3d"
+        ></mj-image>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="20px">Wachtwoord vergeten</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-divider />
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-text> Beste [Naam], </mj-text>
+        <mj-text>
+          We hebben een verzoek ontvangen om het wachtwoord opnieuw in te
+          stellen voor je account. Hieronder vind je de instructies om je
+          wachtwoord opnieuw in te stellen.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-text> [Instructies voor wachtwoordreset] </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-text>
+          Als je dit wachtwoord niet hebt aangevraagd, hoef je verder geen actie
+          te ondernemen. Je kunt dit bericht negeren.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section css-class="ecm-bgcolor" full-width="full-width">
+      <mj-column>
+        <mj-text font-size="10px">
+          Dit is een automatisch gegenereerd bericht. Gelieve niet te
+          antwoorden.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
