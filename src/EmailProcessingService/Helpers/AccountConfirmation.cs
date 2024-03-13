@@ -62,7 +62,7 @@ public class AccountConfirmation
                     </tr>
                     <tr>
                         <td class=""ecm-tablecell nowrap bold"">Registratiedatum:</td>
-                        <td class=""ecm-tablecell"">{data.Data.AccountConfirmationData.RegistrationDate.Value.ToString("yyyy-MM-dd HH:mm:ss")}</td>
+                        <td class=""ecm-tablecell"">{data.Data.AccountConfirmationData.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}</td>
                     </tr>
                     <tr>
                         <td class=""ecm-tablecell nowrap bold"">Registratiedatum:</td>

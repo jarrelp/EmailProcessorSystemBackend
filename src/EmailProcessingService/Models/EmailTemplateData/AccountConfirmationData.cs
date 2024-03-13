@@ -2,6 +2,6 @@ namespace EmailProcessingService.Models.EmailTemplateData;
 
 public class AccountConfirmationData
 {
-    public DateTime? RegistrationDate { get; set; }
-    public string? ActivationLink { get; set; }
+    public DateTime RegistrationDate { get; set; } = new DateTime();
+    public string ActivationLink { get; set; } = "";
 }

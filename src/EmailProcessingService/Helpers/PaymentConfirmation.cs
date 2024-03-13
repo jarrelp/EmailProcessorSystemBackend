@@ -65,7 +65,7 @@ public class PaymentConfirmation
                     </tr>
                     <tr>
                     <td class=""ecm-tablecell nowrap bold"">Geplaatst op:</td>
-                    <td class=""ecm-tablecell"">{data.Data.PaymentConfirmationData.PaymentDate.Value.ToString("yyyy-MM-dd")} {data.Data.PaymentConfirmationData.PaymentDate.Value.ToString("HH:mm:ss")}</td>
+                    <td class=""ecm-tablecell"">{data.Data.PaymentConfirmationData.PaymentDate.ToString("yyyy-MM-dd")} {data.Data.PaymentConfirmationData.PaymentDate.ToString("HH:mm:ss")}</td>
                     </tr>
                 </mj-table>
                 </mj-column>

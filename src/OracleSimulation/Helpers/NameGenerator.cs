@@ -1,7 +1,7 @@
 public class NameGenerator
 {
-  private List<string> _firstNames;
-  private List<string> _surNames;
+  private List<string> _firstNames = [];
+  private List<string> _surNames = [];
   private Random _rnd;
 
   public NameGenerator()

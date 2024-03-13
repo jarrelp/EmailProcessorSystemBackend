@@ -55,7 +55,7 @@ public class AppointmentReminder
                 <mj-section>
                 <mj-column>
                     <mj-text font-style=""italic""
-                    >Vriendelijk herinneren wij u aan uw afspraak op {data.Data.AppointmentReminderData.AppointmentDateTime.Value.ToString("yyyy-MM-dd")} om {data.Data.AppointmentReminderData.AppointmentDateTime.Value.ToString("HH:mm:ss")} in
+                    >Vriendelijk herinneren wij u aan uw afspraak op {data.Data.AppointmentReminderData.AppointmentDateTime.ToString("yyyy-MM-dd")} om {data.Data.AppointmentReminderData.AppointmentDateTime.ToString("HH:mm:ss")} in
                     {data.Data.AppointmentReminderData.Location}.</mj-text
                     >
                 </mj-column>
