@@ -2,9 +2,7 @@ namespace OracleSimulation.Helpers;
 
 public class EmailGenerator
 {
-  private static EmailGenerator _instance;
   private string[] _providers = { "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "example.com" };
-
   private string[] _emailPrefixes = {
             "cool", "super", "mega", "awesome", "epic", "fantastic", "amazing", "master", "pro", "ultra",
             "legendary", "golden", "elite", "ultimate", "power", "ninja", "champion", "star", "alpha", "omega",
@@ -13,24 +11,14 @@ public class EmailGenerator
             "dream", "infinity", "eternal", "cosmic", "universe", "infinity", "galaxy", "cosmos", "beyond",
             "solar", "moon", "sun"
   };
-
   private Random _rnd;
 
-  private EmailGenerator()
+  public EmailGenerator()
   {
     _rnd = new Random();
   }
 
-  public static EmailGenerator GetInstance()
-  {
-    if (_instance == null)
-    {
-      _instance = new EmailGenerator();
-    }
-    return _instance;
-  }
-
-  public string GenerateRandomEmail()
+  public string Generate()
   {
     string prefix = _emailPrefixes[_rnd.Next(0, _emailPrefixes.Length)];
 

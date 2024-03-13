@@ -1,4 +1,4 @@
-namespace EmailProcessingService.Models;
+namespace EmailFetchingService.Models;
 
 //? kan naar meerdere ontvangers verstuurd worden
 //? hoe werkt het met meedere email templates

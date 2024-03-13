@@ -13,7 +13,7 @@ public class OracleDataStateRepository : IOracleDataStateRepository
     public async Task SaveOracleDataStateAsync(OracleDataState state)
     {
         await _daprClient.SaveStateAsync<OracleDataState>(
-            DAPR_STORE_NAME, state.Data, state);
+            DAPR_STORE_NAME, state.Id, state);
     }
 
     public async Task<OracleDataState?> GetOracleDataStateAsync(string data)

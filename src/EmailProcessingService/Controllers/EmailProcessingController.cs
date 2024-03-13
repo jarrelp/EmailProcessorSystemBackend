@@ -19,18 +19,40 @@ public class EmailProcessingController : ControllerBase
     public async Task<ActionResult> GetFetchedData(OracleDataEvent @event, [FromServices] DaprClient daprClient)
     {
         // log e-mail
-        _logger.LogInformation($"Data: {@event.Data} " +
+        _logger.LogInformation($"Id: {@event.Id} " +
             $"On: {@event.Timestamp.ToString("dd-MM-yyyy")} " +
             $"at {@event.Timestamp.ToString("hh:mm:ss")}.");
 
-
         // process email (Dapr output binding)
-        var body = EmailUtils.CreateEmailBody(@event);
+        var emailType = @event.Data.EmailType;
+
+        string? body;
+        switch (emailType)
+        {
+            case EmailType.AccountConfirmation:
+                body = AccountConfirmation.CreateEmailBody(@event);
+                break;
+            case EmailType.AppointmentReminder:
+                body = AppointmentReminder.CreateEmailBody(@event);
+                break;
+            case EmailType.PaymentConfirmation:
+                body = PaymentConfirmation.CreateEmailBody(@event);
+                break;
+            case EmailType.ForgotPassword:
+                body = ForgotPassword.CreateEmailBody(@event);
+                break;
+            case EmailType.Newsletter:
+                body = Newsletter.CreateEmailBody(@event);
+                break;
+            default:
+                throw new InvalidOperationException("Onbekend e-mailtype: " + emailType);
+        }
+
         var metadata = new Dictionary<string, string>
         {
-            ["emailFrom"] = "noreply@cfca.gov",
-            ["emailTo"] = "iemand@gmail.com",
-            ["subject"] = $"test"
+            ["emailFrom"] = @event.Data.Sender.EmailAddress,
+            ["emailTo"] = @event.Data.Recipient.EmailAddress,
+            ["subject"] = @event.Data.Subject
         };
 
         var emailData = new EmailDataEvent(metadata, body);

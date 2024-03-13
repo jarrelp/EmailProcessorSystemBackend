@@ -1,13 +1,8 @@
 namespace EmailFetchingService.Models;
 
-public record struct OracleDataState
+public class OracleDataState
 {
-    public string Data { get; init; }
-    public DateTime EntryTimestamp { get; init; }
-
-    public OracleDataState(string data, DateTime entryTimestamp)
-    {
-        this.Data = data;
-        this.EntryTimestamp = entryTimestamp;
-    }
+    public string Id { get; set; }
+    public EmailData Data { get; set; }
+    public DateTime Timestamp { get; set; }
 }

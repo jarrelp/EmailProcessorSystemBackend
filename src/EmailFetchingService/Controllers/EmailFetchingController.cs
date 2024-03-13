@@ -24,14 +24,20 @@ public class EmailFetchingController : ControllerBase
         {
             // log entry
             _logger.LogInformation($"Oracle data fetched at {@event.Timestamp.ToString("hh:mm:ss")} " +
-                $"with the following data {@event.Data}.");
+                $"with the following id {@event.Id}.");
 
             // store oracle data state
-            var oracleDataState = new OracleDataState(@event.Data, @event.Timestamp);
+            var oracleDataState = new OracleDataState
+            {
+                Id = @event.Id,
+                Data = @event.Data,
+                Timestamp = @event.Timestamp
+            };
+
             await _oracleDataStateRepository.SaveOracleDataStateAsync(oracleDataState);
 
             // get oracle data state
-            var state = await _oracleDataStateRepository.GetOracleDataStateAsync(@event.Data);
+            var state = await _oracleDataStateRepository.GetOracleDataStateAsync(@event.Id);
             if (state == default(OracleDataState))
             {
                 return NotFound();
@@ -39,7 +45,7 @@ public class EmailFetchingController : ControllerBase
 
             // log
             _logger.LogInformation($"Statestore data: " +
-                $"{state.Value.Data}.");
+                $"{state.Data}.");
 
             // publish data (Dapr publish / subscribe)
             await daprClient.PublishEventAsync("pubsub", "fetchedData", @event);

@@ -3,4 +3,7 @@ global using Dapr.Client;
 global using EmailProcessingService.Events;
 global using EmailProcessingService.Helpers;
 global using EmailProcessingService.Models;
+global using EmailProcessingService.Models.EmailTemplateData;
+global using EmailProcessingService.Models.Enums;
 global using Microsoft.AspNetCore.Mvc;
+global using Mjml.Net;

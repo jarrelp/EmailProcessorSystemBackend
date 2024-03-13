@@ -9,7 +9,10 @@ using var daprClient = new DaprClientBuilder()
 
 var pubSubService = new PubSubService(daprClient);
 
-var emailSimulation = new EmailSimulation(pubSubService);
+var emailDataGenerator = new EmailDataGenerator();
+
+var emailSimulation = new EmailSimulation(pubSubService, emailDataGenerator);
+
 
 await emailSimulation.Start();
 

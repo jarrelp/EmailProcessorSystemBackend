@@ -1,34 +1,24 @@
 public class NameGenerator
 {
-  private static NameGenerator _instance;
   private List<string> _firstNames;
-  private List<string> _lastNames;
+  private List<string> _surNames;
   private Random _rnd;
 
-  private NameGenerator()
+  public NameGenerator()
   {
     _rnd = new Random();
     InitializeFirstNames();
-    InitializeLastNames();
+    InitializeSurNames();
   }
 
-  public static NameGenerator GetInstance()
-  {
-    if (_instance == null)
-    {
-      _instance = new NameGenerator();
-    }
-    return _instance;
-  }
-
-  public string GenerateRandomFirstName()
+  public string GenerateFirstName()
   {
     return _firstNames[_rnd.Next(0, _firstNames.Count)];
   }
 
-  public string GenerateRandomLastName()
+  public string GenerateSurName()
   {
-    return _lastNames[_rnd.Next(0, _lastNames.Count)];
+    return _surNames[_rnd.Next(0, _surNames.Count)];
   }
 
   private void InitializeFirstNames()
@@ -48,9 +38,9 @@ public class NameGenerator
             };
   }
 
-  private void InitializeLastNames()
+  private void InitializeSurNames()
   {
-    _lastNames = new List<string>
+    _surNames = new List<string>
             {
                 "Smith", "Johnson", "Williams", "Brown", "Jones",
                 "Garcia", "Miller", "Davis", "Rodriguez", "Martinez",

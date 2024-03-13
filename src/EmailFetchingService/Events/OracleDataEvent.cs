@@ -1,3 +1,3 @@
 namespace EmailFetchingService.Events;
 
-public record struct OracleDataEvent(string Data, DateTime Timestamp);
+public record struct OracleDataEvent(string Id, EmailData Data, DateTime Timestamp);
